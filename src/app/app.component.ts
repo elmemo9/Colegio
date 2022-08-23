@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Alumno } from './models/alumno';
+import { AlumnoService } from './services/alumno.service';
+
 
 @Component({
   selector: 'app-root',
@@ -7,4 +10,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Colegio';
+  alumnos : any[] = [];
+  constructor (){}
+   
+ 
+    
+	
 }

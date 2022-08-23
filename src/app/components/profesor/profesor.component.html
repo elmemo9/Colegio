@@ -1,0 +1,34 @@
+<h2>Profesores</h2>
+<div>
+    <button mat-raised-button class="new" color="primary" (click)="openAdd()">Nuevo Profesor</button>
+</div>
+<div>
+    <table mat-table [dataSource]="lst" class = "mat-elevation-z8">
+        <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef>#</th>
+            <td mat-cell *matCellDef="let element">{{element.id}}</td>
+        </ng-container>
+        <ng-container matColumnDef="nombre">
+            <th mat-header-cell *matHeaderCellDef>Nombre</th>
+            <td mat-cell *matCellDef="let element">{{element.nombre}}</td>
+        </ng-container>
+        <ng-container matColumnDef="apellidos">
+            <th mat-header-cell *matHeaderCellDef>Apellidos</th>
+            <td mat-cell *matCellDef="let element">{{element.apellidos}}</td>
+        </ng-container>
+        <ng-container matColumnDef="genero">
+            <th mat-header-cell *matHeaderCellDef>Genero</th>
+            <td mat-cell *matCellDef="let element">{{element.genero}}</td>
+        </ng-container>
+        <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef>Acciones</th>
+            <td mat-cell *matCellDef="let element">
+                <button (click)="openEdit(element)" mat-raised-button color="basic">Editar</button> |
+                <button (click)="delete(element)" mat-raised-button color="warn">Elminar</button>
+            </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="columnas"></tr>
+        <tr mat-row *matRowDef="let row; columns:columnas"></tr>
+    </table>
+</div>
+

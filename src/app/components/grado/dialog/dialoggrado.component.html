@@ -1,0 +1,20 @@
+<h1 mat-dialog-title>{{ grado != null ? 'Editar' : 'Nuevo'}} Grado</h1>
+<div mat-dialog-content>
+    <mat-form-field>
+        <mat-label>Nombre</mat-label>
+        <input #nombretemp = "ngModel" matInput [(ngModel)]="nombre" required maxlength="50">
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <mat-label>Profesor</mat-label>
+        <mat-select #profesortemp = "ngModel" [(ngModel)]="profesorId" required>
+            <mat-option *ngFor="let itemList of lst" [value]="itemList.id">{{ itemList.nombre }}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+</div>
+<div mat-dialog-actions>
+    <button mat-raised-button (click)="close()">Cancelar</button>
+    <button mat-raised-button color="primary" 
+    (click)="grado != null ? editGrado([nombretemp, profesortemp]) : addGrado([nombretemp, profesortemp])">Guardar</button>
+</div>

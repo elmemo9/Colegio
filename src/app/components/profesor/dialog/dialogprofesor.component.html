@@ -1,0 +1,25 @@
+<h1 mat-dialog-title>{{ profesor != null ? 'Editar' : 'Nuevo'}} Profesor</h1>
+<div mat-dialog-content>
+    <mat-form-field>
+        <mat-label>Nombre</mat-label>
+        <input matInput #nombretemp = "ngModel" [(ngModel)]="nombre" maxlength="30" required>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <mat-label>Apellidos</mat-label>
+        <input matInput #apellidostemp = "ngModel" [(ngModel)]="apellidos" maxlength="30" required>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <mat-label>Genero</mat-label>
+        <mat-select #generotemp = "ngModel" [(ngModel)]="genero" required>
+            <mat-option *ngFor="let gen of generos" [value]="gen">{{ gen }}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <br>
+</div>
+<div mat-dialog-actions>
+    <button mat-raised-button (click)="close()">Cancelar</button>
+    <button mat-raised-button color="primary" 
+    (click)="profesor != null ? editProfesor([nombretemp, apellidostemp, generotemp]) : addProfesor([nombretemp, apellidostemp, generotemp])">Guardar</button>
+</div>

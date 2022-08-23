@@ -1,0 +1,35 @@
+<h1 mat-dialog-title>{{ alumno != null ? 'Editar' : 'Nuevo'}} Alumno</h1>
+<div mat-dialog-content>
+    
+    <mat-form-field>
+        <mat-label>Nombre</mat-label>
+        <input matInput #nombretempl ="ngModel" [(ngModel)]="nombre" maxlength="30" required>
+        
+    </mat-form-field>
+    
+    <br>
+    <mat-form-field>
+        <mat-label>Apellidos</mat-label>
+        <input matInput #apellidostempl ="ngModel" [(ngModel)]="apellidos" required maxlength="30">
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <mat-label>Genero</mat-label>
+        <mat-select #generotempl ="ngModel" [(ngModel)]="genero" required>
+            <mat-option *ngFor="let gen of generos" [value]="gen">{{ gen }}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <br>
+    
+    <mat-form-field>
+        <mat-label>Fecha de Nacimiento</mat-label>
+        <input matInput #fechanacimientotempl ="ngModel" [matDatepicker]="fechaN" [(ngModel)]="fechaNacimiento" required>
+        <mat-datepicker-toggle matSuffix [for]="fechaN"></mat-datepicker-toggle>
+        <mat-datepicker #fechaN></mat-datepicker>
+    </mat-form-field>
+</div>
+<div mat-dialog-actions>
+    <button mat-raised-button (click)="close()">Cancelar</button>
+    <button mat-raised-button color="primary" 
+    (click)="alumno != null ? editAlumno([nombretempl, apellidostempl, generotempl, fechanacimientotempl]) : addAlumno([nombretempl, apellidostempl, generotempl, fechanacimientotempl])">Guardar</button>
+</div>
